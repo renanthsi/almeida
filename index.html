@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrossel de Imagens</title>
+  <link rel="stylesheet" href="style.css" />
+
+
+</head>
+<body>
+     <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <img class="carousel-image" src="imagem/castro.jpg" alt="Castro">
+      <img class="carousel-image" src="images.jpeg">
+      <img  class="carousel-image" src="images (1).jpeg" >
+      <img  class="carousel-image" src="boa-noite (1).webp">
+
+    </div>
+   <div class="carousel-buttons">
+    <button onclick="moveSlide(-1)">⬅️ Anterior</button>
+    <button onclick="moveSlide(1)">Próximo ➡️</button>
+  </div>
+  <script>
+    const track = document.getElementById("carouselTrack");
+    const images = document.querySelectorAll(".carousel-image");
+    let currentIndex = 0;
+
+    function moveSlide(direction) {
+      const totalImages = images.length;
+      currentIndex += direction;
+
+      if (currentIndex < 0) currentIndex = totalImages - 1;
+      if (currentIndex >= totalImages) currentIndex = 0;
+
+      const slideWidth = images[0].clientWidth;
+      track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    }
+  </script>
+</body>
+</html>
